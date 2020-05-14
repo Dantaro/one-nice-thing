@@ -10,11 +10,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, RootReducer)
 
-// const Store = createStore(
-//     RootReducer,
-//     {}
-// )
-
 export default () => {
     let store = createStore(persistedReducer)
     let persistor = persistStore(store)

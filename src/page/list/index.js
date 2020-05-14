@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 const List = () => {
     const noteList = useSelector(state => state.noteList)
     const classes = useStyles()
-    console.log(noteList)
     return (
         <Box className={classes.root}>
             <Typography className={classes.header} variant="h3" gutterBottom>your nice things</Typography>
