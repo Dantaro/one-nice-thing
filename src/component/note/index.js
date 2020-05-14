@@ -8,14 +8,14 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles({
     root: {
         width: '100%',
-        minWidth: 275
+        minWidth: 275,
     },
     title: {
-        fontSize: 14
+        fontSize: 14,
     },
     pos: {
-        marginBottom: 12
-    }
+        marginBottom: 12,
+    },
 })
 
 const Note = ({ text, date }) => {
@@ -37,7 +37,7 @@ const Note = ({ text, date }) => {
 
 Note.propTypes = {
     text: PropTypes.string,
-    date: PropTypes.string
+    date: PropTypes.string,
 }
 
 export default Note

@@ -11,36 +11,36 @@ const useStyles = makeStyles({
     intro: {
         padding: '.5rem',
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     inputPaper: {
         padding: '.5rem',
         margin: '2rem auto 0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     input: {
         width: '85%',
-        marginBottom: '1rem'
+        marginBottom: '1rem',
     },
     save: {
         marginBottom: '1rem',
         display: 'block',
-        margin: '0 auto'
+        margin: '0 auto',
     },
     divider: {
-        margin: '1rem 0'
+        margin: '1rem 0',
     },
     notification: {
         transition: '300ms all ease',
         opacity: '0',
-        willChange: 'opacity'
+        willChange: 'opacity',
     },
     notificationShow: {
-        opacity: '1'
+        opacity: '1',
     },
     dateHeader: {
-        marginTop: '1.5rem'
-    }
+        marginTop: '1.5rem',
+    },
 })
 
 const dateTimeFormatter = new Intl.DateTimeFormat('en-US')
@@ -49,7 +49,7 @@ const saveNote = (date, text, noteList) => {
     const newList = noteList.filter((it) => it.date !== date)
     newList.unshift({
         date,
-        text
+        text,
     })
     return SaveNoteList(newList)
 }
@@ -68,7 +68,7 @@ const Home = () => {
         )
         currentNote = maybeNote || {
             text: null,
-            date: dateTimeFormatter.format(new Date())
+            date: dateTimeFormatter.format(new Date()),
         }
     }
     //We save the noteText value from component state when we save the note

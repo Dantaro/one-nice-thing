@@ -7,11 +7,11 @@ const useStyles = makeStyles({
     root: {
         padding: '1.5rem .5rem',
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     subheader: {
-        marginTop: '2.5rem'
-    }
+        marginTop: '2.5rem',
+    },
 })
 
 const About = () => {

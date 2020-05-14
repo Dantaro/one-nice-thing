@@ -7,6 +7,6 @@ export const theme = createMuiTheme({
         success: { main: '#95CE47' },
         error: { main: '#9F2711' },
         warning: { main: '#F5BE69' },
-        info: { main: '#3D678D' }
-    }
+        info: { main: '#3D678D' },
+    },
 })

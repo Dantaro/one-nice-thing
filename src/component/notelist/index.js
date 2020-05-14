@@ -7,8 +7,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     listItem: {
-        marginBottom: '1rem'
-    }
+        marginBottom: '1rem',
+    },
 })
 
 const FilledList = (noteList, classes) => (

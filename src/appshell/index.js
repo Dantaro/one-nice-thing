@@ -17,44 +17,44 @@ const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex'
+        display: 'flex',
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
-            flexShrink: 0
-        }
+            flexShrink: 0,
+        },
     },
     appBar: {
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth
+            marginLeft: drawerWidth,
         },
-        backgroundImage: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
+        backgroundImage: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
     },
     menuButton: {
         marginRight: theme.spacing(2),
         [theme.breakpoints.up('sm')]: {
-            display: 'none'
-        }
+            display: 'none',
+        },
     },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         backgroundImage: `linear-gradient(${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
         width: drawerWidth,
-        border: 'none'
+        border: 'none',
     },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
         backgroundColor: theme.palette.secondary.main,
-        height: '100vh'
+        height: '100vh',
     },
     link: {
         textDecoration: 'none',
-        color: '#fff'
-    }
+        color: '#fff',
+    },
 }))
 
 export default ({ children }) => {
@@ -116,10 +116,10 @@ export default ({ children }) => {
                         open={mobileOpen}
                         onClose={handleDrawerToggle}
                         classes={{
-                            paper: classes.drawerPaper
+                            paper: classes.drawerPaper,
                         }}
                         ModalProps={{
-                            keepMounted: true // Better open performance on mobile.
+                            keepMounted: true, // Better open performance on mobile.
                         }}
                     >
                         {drawer}
@@ -128,7 +128,7 @@ export default ({ children }) => {
                 <Hidden xsDown implementation="css">
                     <Drawer
                         classes={{
-                            paper: classes.drawerPaper
+                            paper: classes.drawerPaper,
                         }}
                         variant="permanent"
                         open

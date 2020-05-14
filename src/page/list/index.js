@@ -9,11 +9,11 @@ const useStyles = makeStyles({
     root: {
         padding: '.5rem',
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     header: {
-        textDecoration: 'underline'
-    }
+        textDecoration: 'underline',
+    },
 })
 
 const List = () => {

@@ -3,5 +3,5 @@ import NoteListReducer from './reducer/NoteList'
 
 export default combineReducers({
     base: () => ({}),
-    noteList: NoteListReducer
+    noteList: NoteListReducer,
 })
