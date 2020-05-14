@@ -3,19 +3,17 @@ import Note from '../note'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     listItem: {
-        marginBottom: '1rem'
-    }
+        marginBottom: '1rem',
+    },
 })
 
 const FilledList = (noteList, classes) => (
     <div>
-        <List>
-            {noteList.map(it => NoteListItem(it, classes))}
-        </List>
+        <List>{noteList.map((it) => NoteListItem(it, classes))}</List>
     </div>
 )
 
@@ -31,11 +29,9 @@ const NoteListItem = (note, classes) => (
     </ListItem>
 )
 
-const NoteList = ({noteList}) => {
-    const classes = useStyles();
-    return (
-        noteList.length === 0 ? EmptyList() : FilledList(noteList, classes)
-    )
+const NoteList = ({ noteList }) => {
+    const classes = useStyles()
+    return noteList.length === 0 ? EmptyList() : FilledList(noteList, classes)
 }
 
 export default NoteList
