@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     },
     input: {
         width: '85%',
-        marginBottom: '1rem',
+        marginBottom: '1rem'
     },
     save: {
         marginBottom: '1rem',
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 const dateTimeFormatter = new Intl.DateTimeFormat('en-US')
 
 const saveNote = (date, text, noteList) => {
-    const newList = noteList.filter(it => it.date !== date)
+    const newList = noteList.filter((it) => it.date !== date)
     newList.unshift({
         date,
         text
@@ -58,13 +58,18 @@ const Home = () => {
     const classes = useStyles()
 
     //Set up note, either as from the existing list, or as a new note entirely
-    const noteList = useSelector(state => state.noteList)
+    const noteList = useSelector((state) => state.noteList)
     let currentNote
     if (noteList.length === 0) {
         currentNote = { text: null, date: dateTimeFormatter.format(new Date()) }
     } else {
-        const maybeNote = noteList.find(it => it.date === dateTimeFormatter.format(new Date()))
-        currentNote = maybeNote || { text: null, date: dateTimeFormatter.format(new Date()) }
+        const maybeNote = noteList.find(
+            (it) => it.date === dateTimeFormatter.format(new Date())
+        )
+        currentNote = maybeNote || {
+            text: null,
+            date: dateTimeFormatter.format(new Date())
+        }
     }
     //We save the noteText value from component state when we save the note
     const [noteText, setNoteText] = useState(currentNote.text)
@@ -77,25 +82,35 @@ const Home = () => {
     return (
         <div>
             <Paper elevation={2} className={classes.intro}>
-                <Typography variant='h4' gutterBottom>Welcome to One Nice Thing</Typography>
-                <Typography variant='body1'>
-                    Here are the rules.  Every day stop in and put one good thing that happened to you here.
-                    You can change it up until midnight, after which it's locked in the past, immutable.
-                    You can view your list of prior good things on the List page.
-                    The more you do this, the more you'll find that you remember the positives instead of the negatives,
-                    and hopefully this will lead to a happier, more fulfilled you!
+                <Typography variant="h4" gutterBottom>
+                    Welcome to One Nice Thing
+                </Typography>
+                <Typography variant="body1">
+                    Here are the rules. Every day stop in and put one good thing
+                    that happened to you here. You can change it up until
+                    midnight, after which it's locked in the past, immutable.
+                    You can view your list of prior good things on the List
+                    page. The more you do this, the more you'll find that you
+                    remember the positives instead of the negatives, and
+                    hopefully this will lead to a happier, more fulfilled you!
                 </Typography>
             </Paper>
 
             {/* Things in the present are ever changing, and we want to be able to keep it up to date */}
             <Paper className={classes.inputPaper}>
-                <Typography className={classes.dateHeader} variant='h5' gutterBottom>On {currentNote.date}. . .</Typography>
+                <Typography
+                    className={classes.dateHeader}
+                    variant="h5"
+                    gutterBottom
+                >
+                    On {currentNote.date}. . .
+                </Typography>
                 <TextField
-                    id='NoteInput'
+                    id="NoteInput"
                     label="What's today's nice thing?"
                     defaultValue={noteText}
                     className={classes.input}
-                    onInput={e => setNoteText(e.target.value)}
+                    onInput={(e) => setNoteText(e.target.value)}
                 />
                 <Button
                     variant="contained"
@@ -109,7 +124,14 @@ const Home = () => {
                 >
                     Save :)
                 </Button>
-                <Typography variant='h6' className={`${classes.notification} ${showSave && classes.notificationShow}`}>Great!!!</Typography>
+                <Typography
+                    variant="h6"
+                    className={`${classes.notification} ${
+                        showSave && classes.notificationShow
+                    }`}
+                >
+                    Great!!!
+                </Typography>
             </Paper>
         </div>
     )

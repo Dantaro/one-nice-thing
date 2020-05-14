@@ -1,49 +1,49 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import IconButton from '@material-ui/core/IconButton'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
+import MenuIcon from '@material-ui/icons/Menu'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
+        display: 'flex'
     },
     drawer: {
         [theme.breakpoints.up('sm')]: {
             width: drawerWidth,
-            flexShrink: 0,
-        },
+            flexShrink: 0
+        }
     },
     appBar: {
         [theme.breakpoints.up('sm')]: {
             width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
+            marginLeft: drawerWidth
         },
-        backgroundImage: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
+        backgroundImage: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.main})`
     },
     menuButton: {
         marginRight: theme.spacing(2),
         [theme.breakpoints.up('sm')]: {
-            display: 'none',
-        },
+            display: 'none'
+        }
     },
     // necessary for content to be below app bar
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
         backgroundImage: `linear-gradient(${theme.palette.primary.dark}, ${theme.palette.primary.main})`,
         width: drawerWidth,
-        border: 'none',
+        border: 'none'
     },
     content: {
         flexGrow: 1,
@@ -55,15 +55,15 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: '#fff'
     }
-}));
+}))
 
 export default ({ children }) => {
-    const classes = useStyles();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const classes = useStyles()
+    const [mobileOpen, setMobileOpen] = React.useState(false)
 
     const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
+        setMobileOpen(!mobileOpen)
+    }
 
     const drawer = (
         <div>
@@ -86,7 +86,7 @@ export default ({ children }) => {
                 </Link>
             </List>
         </div>
-    );
+    )
 
     return (
         <div className={classes.root}>
@@ -104,7 +104,7 @@ export default ({ children }) => {
                     </IconButton>
                     <Typography variant="h6" noWrap>
                         One Nice Thing
-          </Typography>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <nav className={classes.drawer} aria-label="mailbox folders">
@@ -116,10 +116,10 @@ export default ({ children }) => {
                         open={mobileOpen}
                         onClose={handleDrawerToggle}
                         classes={{
-                            paper: classes.drawerPaper,
+                            paper: classes.drawerPaper
                         }}
                         ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
+                            keepMounted: true // Better open performance on mobile.
                         }}
                     >
                         {drawer}
@@ -128,7 +128,7 @@ export default ({ children }) => {
                 <Hidden xsDown implementation="css">
                     <Drawer
                         classes={{
-                            paper: classes.drawerPaper,
+                            paper: classes.drawerPaper
                         }}
                         variant="permanent"
                         open
@@ -142,5 +142,5 @@ export default ({ children }) => {
                 {children}
             </main>
         </div>
-    );
+    )
 }
