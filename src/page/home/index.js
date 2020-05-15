@@ -110,6 +110,8 @@ const Home = () => {
                     label="What's today's nice thing?"
                     defaultValue={noteText}
                     className={classes.input}
+                    multiline
+                    rowsMax={4}
                     onInput={(e) => setNoteText(e.target.value)}
                 />
                 <Button

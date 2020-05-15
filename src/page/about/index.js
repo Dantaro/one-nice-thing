@@ -34,7 +34,7 @@ const About = () => {
                 On the topic of data collection
             </Typography>
             <Typography variant="body1">
-                One Nice Thing does not collet any information entered into the
+                One Nice Thing does not collect any information entered into the
                 application. There is no back end server collecting data, no
                 email or other personal information collection, and no ads. The
                 data is all stored locally on your device.
