@@ -86,13 +86,15 @@ const Home = () => {
                     Welcome to One Nice Thing
                 </Typography>
                 <Typography variant="body1">
-                    Here are the rules. Every day stop in and put one good thing
+                    Here are the rules: Every day stop in and put one good thing
                     that happened to you here. You can change it up until
                     midnight, after which it's locked in the past, immutable.
-                    You can view your list of prior good things on the List
-                    page. The more you do this, the more you'll find that you
-                    remember the positives instead of the negatives, and
-                    hopefully this will lead to a happier, more fulfilled you!
+                    You can view your list of prior good things at any time, so
+                    if you ever need a pick-me-up or just want to revist
+                    positive moments they're always there for you. The more you
+                    do this, the more you'll find that you remember the
+                    positives instead of the negatives, and hopefully this will
+                    lead to a happier, more fulfilled you!
                 </Typography>
             </Paper>
 
