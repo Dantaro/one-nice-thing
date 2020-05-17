@@ -8,14 +8,14 @@ import { Provider } from 'react-redux'
 import Store from './store/Store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { theme } from './theme/theme'
+import { Theme } from './theme'
 
 const { store, persistor } = Store()
 
 ReactDOM.render(
     <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={Theme}>
                 <BrowserRouter>
                     <App />
                 </BrowserRouter>
