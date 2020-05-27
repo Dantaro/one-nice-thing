@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { SaveNoteList } from '../../store/action/NoteList'
-import { parse, differenceInDays, isToday } from 'date-fns'
+import { findCurrentStreak } from '../../util/notelist/NoteListUtil'
 
 const useStyles = makeStyles({
     intro: {
@@ -53,33 +53,6 @@ const saveNote = (date, text, noteList) => {
         text,
     })
     return SaveNoteList(newList)
-}
-
-const findCurrentStreak = (noteList) => {
-    const referenceDate = new Date()
-    const dates = noteList.map((note) =>
-        parse(note.date, 'MM/dd/yyyy', referenceDate)
-    )
-    let numConsecutive = 0
-
-    if (dates.length > 0 && isToday(dates[0])) {
-        numConsecutive += 1
-    }
-
-    for (let i = 0; i < dates.length; i++) {
-        if (i + 1 >= dates.length) {
-            break
-        }
-        const d1 = dates[i]
-        const d2 = dates[i + 1]
-        if (differenceInDays(d1, d2) === 1) {
-            numConsecutive += 1
-        } else {
-            break
-        }
-    }
-
-    return numConsecutive
 }
 
 const Home = () => {
