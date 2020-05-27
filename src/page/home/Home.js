@@ -71,7 +71,7 @@ const findCurrentStreak = (noteList) => {
             break
         }
         const d1 = dates[i]
-        const d2 = dates[i]
+        const d2 = dates[i + 1]
         if (differenceInDays(d1, d2) === 1) {
             numConsecutive += 1
         } else {
