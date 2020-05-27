@@ -22,7 +22,7 @@ const List = () => {
     return (
         <Box className={classes.root}>
             <Typography className={classes.header} variant="h3" gutterBottom>
-                your nice things
+                Your nice things
             </Typography>
             <NoteList noteList={noteList} />
         </Box>
