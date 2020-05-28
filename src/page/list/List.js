@@ -1,5 +1,5 @@
 import React from 'react'
-import { NoteList } from '../../component/notelist'
+import { NoteList } from 'component/notelist'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import { useSelector } from 'react-redux'

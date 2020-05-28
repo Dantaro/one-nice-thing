@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
-import { SaveNoteList } from '../../store/action/NoteList'
-import { findCurrentStreak } from '../../util/notelist/NoteListUtil'
+import { SaveNoteList } from 'store/action/NoteList'
+import { findCurrentStreak } from 'util/notelist/NoteListUtil'
 
 const useStyles = makeStyles({
     intro: {

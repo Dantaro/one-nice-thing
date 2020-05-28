@@ -1,5 +1,5 @@
 import React from 'react'
-import { Note } from '../note'
+import { Note } from 'component/note'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Typography from '@material-ui/core/Typography'

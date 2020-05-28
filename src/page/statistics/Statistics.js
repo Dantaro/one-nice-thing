@@ -6,7 +6,7 @@ import {
     findMostConsecutiveDays,
     findAverageWordCount,
     findLongestNote,
-} from '../../util/notelist'
+} from 'util/notelist'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
