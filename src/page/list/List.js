@@ -11,9 +11,6 @@ const useStyles = makeStyles({
         margin: '0 auto',
         textAlign: 'center',
     },
-    header: {
-        textDecoration: 'underline',
-    },
 })
 
 const List = () => {
@@ -21,7 +18,7 @@ const List = () => {
     const classes = useStyles()
     return (
         <Box className={classes.root}>
-            <Typography className={classes.header} variant="h3" gutterBottom>
+            <Typography variant="h3" gutterBottom>
                 Your nice things
             </Typography>
             <NoteList noteList={noteList} />

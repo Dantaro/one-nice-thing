@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles({
     paper: {
         padding: '1.5rem .5rem',
-        margin: '0 auto 1rem auto',
+        margin: '0 auto 2rem auto',
         textAlign: 'center',
     },
     header: {
@@ -32,21 +32,17 @@ export const Statistics = () => {
                 Statistics
             </Typography>
             <Paper className={classes.paper} elevation={2}>
-                <Typography variant="body1">
+                <Typography variant="body1" gutterBottom>
                     Most consecutive days:{' '}
                     {`${bestStreak} ${bestStreak === 1 ? 'day' : 'days'}`}
                 </Typography>
-            </Paper>
-            <Paper className={classes.paper} elevation={2}>
-                <Typography variant="body1">
+                <Typography variant="body1" gutterBottom>
                     Average word count:{' '}
                     {`${averageWordCount} ${
                         averageWordCount === 1 ? 'word' : 'words'
                     }`}
                 </Typography>
-            </Paper>
-            <Paper className={classes.paper} elevation={2}>
-                <Typography variant="body1">
+                <Typography variant="body1" gutterBottom>
                     Longest Note:{' '}
                     {`${longestNote} ${longestNote === 1 ? 'word' : 'words'}`}
                 </Typography>

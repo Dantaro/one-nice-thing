@@ -89,6 +89,9 @@ export default ({ children }) => {
                         <ListItemText primary="Statistics" />
                     </ListItem>
                 </Link>
+                <ListItem>
+                    <Typography variant="subtitle2">v1.1.0</Typography>
+                </ListItem>
             </List>
         </div>
     )

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
     inputPaper: {
         padding: '.5rem',
-        margin: '2rem auto 0 auto',
+        margin: '2rem auto',
         textAlign: 'center',
     },
     input: {
