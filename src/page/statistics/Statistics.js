@@ -14,6 +14,7 @@ const useStyles = makeStyles({
         padding: '1.5rem .5rem',
         margin: '0 auto 2rem auto',
         textAlign: 'center',
+        maxWidth: '50rem',
     },
     header: {
         textAlign: 'center',
@@ -28,10 +29,17 @@ export const Statistics = () => {
     const longestNote = findLongestNote(noteList)
     return (
         <div>
-            <Typography className={classes.header} variant="h3" gutterBottom>
-                Statistics
-            </Typography>
             <Paper className={classes.paper} elevation={2}>
+                <Typography
+                    className={classes.header}
+                    variant="h4"
+                    gutterBottom
+                >
+                    Statistics
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    Here's a bit of fun information about your nice things!
+                </Typography>
                 <Typography variant="body1" gutterBottom>
                     Most consecutive days:{' '}
                     {`${bestStreak} ${bestStreak === 1 ? 'day' : 'days'}`}

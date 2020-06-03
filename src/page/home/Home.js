@@ -10,7 +10,7 @@ import { findCurrentStreak } from 'util/notelist/NoteListUtil'
 
 const useStyles = makeStyles({
     intro: {
-        padding: '.5rem',
+        padding: '1.5rem 1rem',
         margin: '0 auto',
         textAlign: 'center',
     },
