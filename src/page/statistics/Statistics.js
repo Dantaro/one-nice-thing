@@ -41,6 +41,9 @@ export const Statistics = () => {
                     Here's a bit of fun information about your nice things!
                 </Typography>
                 <Typography variant="body1" gutterBottom>
+                    Total number of nice things: {noteList.length}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
                     Most consecutive days:{' '}
                     {`${bestStreak} ${bestStreak === 1 ? 'day' : 'days'}`}
                 </Typography>
