@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import NoteListReducer from './reducer/NoteList'
+import NoteListReducer from 'store/reducer/NoteList'
 
 export default combineReducers({
     base: () => ({}),

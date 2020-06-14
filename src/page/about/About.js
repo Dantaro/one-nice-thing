@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles({
     root: {
         padding: '1.5rem .5rem',
-        margin: '0 auto',
+        margin: '0 auto 2rem 0',
         textAlign: 'center',
     },
     subheader: {
@@ -45,7 +45,7 @@ const About = () => {
             <Typography variant="h5" className={classes.subheader} gutterBottom>
                 What can you do to help?
             </Typography>
-            <Typography variant="body1">
+            <Typography variant="body1" gutterBottom>
                 One Nice Thing is an OSS project, and can be found on{' '}
                 <a href="https://github.com/Dantaro/one-nice-thing">Github</a>.
                 Contributions are always welcome! If you have thoughts for

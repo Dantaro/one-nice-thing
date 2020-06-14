@@ -1,4 +1,4 @@
-import { SAVE_NOTE_LIST_ACTION } from '../action/NoteList'
+import { SAVE_NOTE_LIST_ACTION } from 'store/action/NoteList'
 
 export default (state = [], action) => {
     switch (action.type) {

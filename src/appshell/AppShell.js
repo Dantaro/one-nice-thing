@@ -84,6 +84,14 @@ export default ({ children }) => {
                         <ListItemText primary="About" />
                     </ListItem>
                 </Link>
+                <Link to="/statistics" className={classes.link}>
+                    <ListItem button>
+                        <ListItemText primary="Statistics" />
+                    </ListItem>
+                </Link>
+                <ListItem>
+                    <Typography variant="subtitle2">v1.1.0</Typography>
+                </ListItem>
             </List>
         </div>
     )
