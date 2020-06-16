@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import { useSelector } from 'react-redux'
 import {
     findMostConsecutiveDays,
-    findAverageWordCount,
+    findAverageWordCountRounded,
     findLongestNote,
 } from 'util/notelist'
 import { makeStyles } from '@material-ui/core/styles'
@@ -25,7 +25,7 @@ export const Statistics = () => {
     const classes = useStyles()
     const noteList = useSelector((state) => state.noteList)
     const bestStreak = findMostConsecutiveDays(noteList)
-    const averageWordCount = findAverageWordCount(noteList)
+    const averageWordCount = findAverageWordCountRounded(noteList)
     const longestNote = findLongestNote(noteList)
     return (
         <div>
@@ -48,14 +48,16 @@ export const Statistics = () => {
                     {`${bestStreak} ${bestStreak === 1 ? 'day' : 'days'}`}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    Average word count:{' '}
-                    {`${averageWordCount} ${
-                        averageWordCount === 1 ? 'word' : 'words'
-                    }`}
+                    Average word count: {' '}
+                    {`${averageWordCount} ${averageWordCount === 1 ? 'word' : 'words'}`}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
                     Longest Note:{' '}
                     {`${longestNote} ${longestNote === 1 ? 'word' : 'words'}`}
+                </Typography>
+                <br/>
+                <Typography variant="body2">
+                    Have an idea for other statistics? <a href="mailto:onenicethingdev@gmail.com">Shoot over an email</a> with your suggestions!
                 </Typography>
             </Paper>
         </div>

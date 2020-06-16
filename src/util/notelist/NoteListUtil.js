@@ -71,6 +71,9 @@ export const findAverageWordCount = (noteList) => {
     )
 }
 
+export const findAverageWordCountRounded = (noteList) => 
+    Math.round(findAverageWordCount(noteList))
+
 export const findLongestNote = (noteList) => {
     if (!noteList || noteList.length === 0) {
         return 0
