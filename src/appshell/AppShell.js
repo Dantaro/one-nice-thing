@@ -90,7 +90,7 @@ export default ({ children }) => {
                     </ListItem>
                 </Link>
                 <ListItem>
-                    <Typography variant="subtitle2">v1.1.1</Typography>
+                    <Typography variant="subtitle2">v1.1.2</Typography>
                 </ListItem>
             </List>
         </div>
