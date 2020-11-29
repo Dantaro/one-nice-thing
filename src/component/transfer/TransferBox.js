@@ -46,8 +46,10 @@ const SaveLoadQuestion = ({ handleLoad, handleSave, classes }) => {
                 alignItems="center"
             >
                 <Grid item xs={12}>
-                    Create an export of your notes so you can import them on
-                    another device.
+                    <Typography>
+                        Create an export of your notes so you can import them on
+                        another device.
+                    </Typography>
                 </Grid>
                 <Grid item xs={6} className={classes.buttonGridContainer}>
                     <Button onClick={handleLoad}>Import</Button>

@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: '#fff',
         cursor: 'pointer',
+        marginLeft: '1em',
     },
 }))
 
@@ -99,6 +100,7 @@ export default ({ children }) => {
                     </ListItem>
                 </Link>
                 <ListItem>
+                    <Typography variant="subtitle2">v1.1.2</Typography>
                     <Typography
                         variant="subtitle2"
                         onClick={() => setTransferSaveOpen(true)}
@@ -106,9 +108,6 @@ export default ({ children }) => {
                     >
                         <FontAwesomeIcon icon={faFileUpload} />
                     </Typography>
-                </ListItem>
-                <ListItem>
-                    <Typography variant="subtitle2">v1.1.2</Typography>
                 </ListItem>
             </List>
             <TransferModal
