@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import { TransferModal } from 'component/transfer/TransferBox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
+import { ReleaseNotesModal } from 'component/releasenotes'
 
 const drawerWidth = 240
 
@@ -100,7 +101,9 @@ export default ({ children }) => {
                     </ListItem>
                 </Link>
                 <ListItem>
-                    <Typography variant="subtitle2">v1.1.2</Typography>
+                    <Typography variant="subtitle2">
+                        {process.env.REACT_APP_CURRENT_VERSION}
+                    </Typography>
                     <Typography
                         variant="subtitle2"
                         onClick={() => setTransferSaveOpen(true)}
@@ -110,17 +113,19 @@ export default ({ children }) => {
                     </Typography>
                 </ListItem>
             </List>
+        </div>
+    )
+
+    return (
+        <div className={classes.root}>
+            {/* Global Modals */}
             <TransferModal
                 open={transferSaveOpen}
                 handleClose={() => {
                     setTransferSaveOpen(false)
                 }}
             />
-        </div>
-    )
-
-    return (
-        <div className={classes.root}>
+            <ReleaseNotesModal />
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>

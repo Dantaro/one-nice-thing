@@ -21,7 +21,7 @@ const TransferModalState = {
 const useStyles = makeStyles((theme) => ({
     paper: {
         position: 'absolute',
-        width: 400,
+        width: '20em',
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
+        [theme.breakpoints.up('md')]: {
+            width: '28em',
+        },
     },
     buttonGridContainer: {
         textAlign: 'center',
