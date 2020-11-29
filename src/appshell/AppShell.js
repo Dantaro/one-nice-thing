@@ -12,6 +12,10 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
+import { TransferModal } from 'component/transfer/TransferBox'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
+import { ReleaseNotesModal } from 'component/releasenotes'
 
 const drawerWidth = 240
 
@@ -55,11 +59,18 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: '#fff',
     },
+    transfer: {
+        textDecoration: 'none',
+        color: '#fff',
+        cursor: 'pointer',
+        marginLeft: '1em',
+    },
 }))
 
 export default ({ children }) => {
     const classes = useStyles()
     const [mobileOpen, setMobileOpen] = React.useState(false)
+    const [transferSaveOpen, setTransferSaveOpen] = React.useState(false)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
@@ -79,18 +90,27 @@ export default ({ children }) => {
                         <ListItemText primary="Your Nice Things" />
                     </ListItem>
                 </Link>
-                <Link to="/about" className={classes.link}>
-                    <ListItem button>
-                        <ListItemText primary="About" />
-                    </ListItem>
-                </Link>
                 <Link to="/statistics" className={classes.link}>
                     <ListItem button>
                         <ListItemText primary="Statistics" />
                     </ListItem>
                 </Link>
+                <Link to="/about" className={classes.link}>
+                    <ListItem button>
+                        <ListItemText primary="About" />
+                    </ListItem>
+                </Link>
                 <ListItem>
-                    <Typography variant="subtitle2">v1.1.2</Typography>
+                    <Typography variant="subtitle2">
+                        {process.env.REACT_APP_CURRENT_VERSION}
+                    </Typography>
+                    <Typography
+                        variant="subtitle2"
+                        onClick={() => setTransferSaveOpen(true)}
+                        className={classes.transfer}
+                    >
+                        <FontAwesomeIcon icon={faFileUpload} />
+                    </Typography>
                 </ListItem>
             </List>
         </div>
@@ -98,6 +118,14 @@ export default ({ children }) => {
 
     return (
         <div className={classes.root}>
+            {/* Global Modals */}
+            <TransferModal
+                open={transferSaveOpen}
+                handleClose={() => {
+                    setTransferSaveOpen(false)
+                }}
+            />
+            <ReleaseNotesModal />
             <CssBaseline />
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
