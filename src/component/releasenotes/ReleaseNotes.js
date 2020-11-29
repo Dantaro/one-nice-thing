@@ -26,9 +26,7 @@ const ReleaseNotesModal = () => {
     // Move release version into global config
     const versionNumber = process.env.REACT_APP_CURRENT_VERSION
 
-    const [open, setOpen] = useState(
-        !releaseNotesViewed.includes(versionNumber)
-    )
+    const [open, setOpen] = useState(releaseNotesViewed !== versionNumber)
 
     const handleClose = () => {
         dispatch(SaveReleaseNoteView(versionNumber))
