@@ -45,6 +45,10 @@ const SaveLoadQuestion = ({ handleLoad, handleSave, classes }) => {
                 alignContent="center"
                 alignItems="center"
             >
+                <Grid item xs={12}>
+                    Create an export of your notes so you can import them on
+                    another device.
+                </Grid>
                 <Grid item xs={6} className={classes.buttonGridContainer}>
                     <Button onClick={handleLoad}>Import</Button>
                 </Grid>
@@ -82,9 +86,9 @@ const TransferModal = ({ open, handleClose }) => {
                 />
             )
         } else if (saveOrLoadState === TransferModalState.SAVE) {
-            return <TransferSaveBox state={state} />
+            return <TransferExportBox state={state} />
         } else if (saveOrLoadState === TransferModalState.LOAD) {
-            return <TransferLoadBox dispatch={dispatch} />
+            return <TransferImportBox dispatch={dispatch} />
         } else {
             setSaveOrLoadState(TransferModalState.DECIDE)
         }
@@ -103,7 +107,7 @@ const TransferModal = ({ open, handleClose }) => {
     )
 }
 
-const TransferSaveBox = ({ state }) => {
+const TransferExportBox = ({ state }) => {
     // Ask for encryption key / password
     // Encrypt state via TransferUtil
     // Display encrypted state in a copiable box
@@ -146,20 +150,28 @@ const TransferSaveBox = ({ state }) => {
                 </Grid>
             )}
             {exportedState && (
-                <Grid item xs={12}>
-                    <TextField
-                        defaultValue={exportedState}
-                        multiline
-                        rows={5}
-                        style={{ width: '100%' }}
-                    ></TextField>
-                </Grid>
+                <>
+                    <Grid item xs={12}>
+                        <Typography>
+                            Use this export with your key to import to another
+                            device!
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            defaultValue={exportedState}
+                            multiline
+                            rows={5}
+                            style={{ width: '100%' }}
+                        ></TextField>
+                    </Grid>
+                </>
             )}
         </Grid>
     )
 }
 
-const TransferLoadBox = ({ dispatch }) => {
+const TransferImportBox = ({ dispatch }) => {
     // Ask for encryption key / password
     const [providedKey, setProvidedKey] = useState(undefined)
     const [importValue, setImportValue] = useState(undefined)
