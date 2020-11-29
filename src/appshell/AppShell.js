@@ -12,6 +12,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
+import { TransferModal } from 'component/transfer/TransferBox'
 
 const drawerWidth = 240
 
@@ -60,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 export default ({ children }) => {
     const classes = useStyles()
     const [mobileOpen, setMobileOpen] = React.useState(false)
+    const [transferSaveOpen, setTransferSaveOpen] = React.useState(false)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
@@ -90,9 +92,23 @@ export default ({ children }) => {
                     </ListItem>
                 </Link>
                 <ListItem>
+                    <Typography
+                        variant="subtitle2"
+                        onClick={() => setTransferSaveOpen(true)}
+                    >
+                        Transfer
+                    </Typography>
+                </ListItem>
+                <ListItem>
                     <Typography variant="subtitle2">v1.1.2</Typography>
                 </ListItem>
             </List>
+            <TransferModal
+                open={transferSaveOpen}
+                handleClose={() => {
+                    setTransferSaveOpen(false)
+                }}
+            />
         </div>
     )
 
