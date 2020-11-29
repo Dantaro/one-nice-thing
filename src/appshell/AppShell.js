@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import { TransferModal } from 'component/transfer/TransferBox'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 
 const drawerWidth = 240
 
@@ -56,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: '#fff',
     },
+    transfer: {
+        textDecoration: 'none',
+        color: '#fff',
+        cursor: 'pointer',
+    },
 }))
 
 export default ({ children }) => {
@@ -95,8 +102,9 @@ export default ({ children }) => {
                     <Typography
                         variant="subtitle2"
                         onClick={() => setTransferSaveOpen(true)}
+                        className={classes.transfer}
                     >
-                        Transfer
+                        <FontAwesomeIcon icon={faFileUpload} />
                     </Typography>
                 </ListItem>
                 <ListItem>

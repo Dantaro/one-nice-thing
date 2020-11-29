@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import {
     Modal,
     Grid,
@@ -10,6 +10,7 @@ import {
     TextField,
 } from '@material-ui/core'
 import { encryptObject, decryptObject } from 'util/transfer/TransferUtil'
+import { ReplaceRoot } from 'store/action/Root'
 
 const TransferModalState = {
     DECIDE: 0,
@@ -37,13 +38,18 @@ const useStyles = makeStyles((theme) => ({
 const SaveLoadQuestion = ({ handleLoad, handleSave, classes }) => {
     return (
         <Grid container>
-            <Grid itemxs={12}>Save or Load?</Grid>
-            <Grid item container xs={12} alignContent="center">
-                <Grid item xs={6} className={classes.buttonGridContainer}>
-                    <Button onClick={handleSave}>Export</Button>
-                </Grid>
+            <Grid
+                item
+                container
+                xs={12}
+                alignContent="center"
+                alignItems="center"
+            >
                 <Grid item xs={6} className={classes.buttonGridContainer}>
                     <Button onClick={handleLoad}>Import</Button>
+                </Grid>
+                <Grid item xs={6} className={classes.buttonGridContainer}>
+                    <Button onClick={handleSave}>Export</Button>
                 </Grid>
             </Grid>
         </Grid>
@@ -53,6 +59,7 @@ const SaveLoadQuestion = ({ handleLoad, handleSave, classes }) => {
 const TransferModal = ({ open, handleClose }) => {
     // Pull state to transfer
     const state = useSelector((state) => state)
+    const dispatch = useDispatch()
 
     // Present 2 buttons (Load/Save)
     // Load Save Box or Load Box
@@ -77,7 +84,7 @@ const TransferModal = ({ open, handleClose }) => {
         } else if (saveOrLoadState === TransferModalState.SAVE) {
             return <TransferSaveBox state={state} />
         } else if (saveOrLoadState === TransferModalState.LOAD) {
-            return <TransferLoadBox />
+            return <TransferLoadBox dispatch={dispatch} />
         } else {
             setSaveOrLoadState(TransferModalState.DECIDE)
         }
@@ -113,7 +120,6 @@ const TransferSaveBox = ({ state }) => {
             setExportedState(exported)
             setExportError(undefined)
         } catch (e) {
-            console.log(e)
             setExportedState(undefined)
             setExportError(e.message)
         }
@@ -126,6 +132,7 @@ const TransferSaveBox = ({ state }) => {
                 <Input
                     type="password"
                     onChange={(e) => setProvidedKey(e.target.value)}
+                    style={{ width: '100%' }}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -152,7 +159,7 @@ const TransferSaveBox = ({ state }) => {
     )
 }
 
-const TransferLoadBox = ({ setApplicationState }) => {
+const TransferLoadBox = ({ dispatch }) => {
     // Ask for encryption key / password
     const [providedKey, setProvidedKey] = useState(undefined)
     const [importValue, setImportValue] = useState(undefined)
@@ -168,7 +175,7 @@ const TransferLoadBox = ({ setApplicationState }) => {
             })
             setExportError(undefined)
             // setApplicationState(importState)
-            console.log(importState)
+            dispatch(ReplaceRoot(importState))
             setSuccess(true)
         } catch (e) {
             setSuccess(false)
@@ -179,18 +186,20 @@ const TransferLoadBox = ({ setApplicationState }) => {
     return (
         <Grid container>
             <Grid item xs={12}>
-                <Typography>Please provide a key</Typography>
+                <Typography>Please provide your key</Typography>
                 <Input
                     type="password"
                     onChange={(e) => setProvidedKey(e.target.value)}
+                    style={{ width: '100%' }}
                 />
             </Grid>
             <Grid item xs={12}>
-                <Typography>Please provide a key</Typography>
+                <Typography>Please provide the transfer data</Typography>
                 <TextField
                     multiline
                     rows={5}
                     onChange={(e) => setImportValue(e.target.value)}
+                    style={{ width: '100%' }}
                 />
             </Grid>
             <Grid item xs={12}>

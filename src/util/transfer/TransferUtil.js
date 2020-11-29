@@ -21,6 +21,13 @@ class NoObjectToEncryptError extends Error {
     }
 }
 
+class TransferParseError extends Error {
+    constructor() {
+        super('Object failed to parse')
+        this.name = 'TransferParseError'
+    }
+}
+
 const encryptObject = ({ obj, encryptionKey }) => {
     if (!encryptionKey) {
         throw new NoEncryptionKeyError()
@@ -37,7 +44,11 @@ const decryptObject = ({ encryptedString, encryptionKey }) => {
         throw new NoEncryptedStringError()
     }
     const bytes = AES.AES.decrypt(encryptedString, encryptionKey)
-    return bytes.toString(AES.enc.Utf8)
+    try {
+        return JSON.parse(bytes.toString(AES.enc.Utf8))
+    } catch (e) {
+        throw new TransferParseError()
+    }
 }
 
 export {
@@ -46,4 +57,5 @@ export {
     NoEncryptedStringError,
     NoEncryptionKeyError,
     NoObjectToEncryptError,
+    TransferParseError,
 }
