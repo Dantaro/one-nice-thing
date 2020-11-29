@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Grid, Typography, makeStyles } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { SaveReleaseNoteView } from 'store/action/ReleaseNotes'
+import { Releases } from './Releases'
 
 const useStyles = makeStyles((theme) => ({
     modalContent: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-const ReleaseNotesModal = () => {
+const ReleaseNotesModal = ({ openBypass }) => {
     const releaseNotesViewed = useSelector((state) => state.releaseNotesViewed) // Get this from Redux
     const dispatch = useDispatch()
     // Move release version into global config
@@ -35,7 +36,7 @@ const ReleaseNotesModal = () => {
     const classes = useStyles()
     return (
         <Modal
-            open={open}
+            open={openBypass || open}
             onClose={handleClose}
             disableAutoFocus
             disableEnforceFocus
@@ -46,17 +47,7 @@ const ReleaseNotesModal = () => {
                         <Typography variant="h5">
                             Release notes for {versionNumber}
                         </Typography>
-                        <Typography variant="body1">
-                            With release 1.2.0 we're adding the ability to
-                            (manually) export/import your data. This can be done
-                            by clicking the icon in the menu next to the version
-                            number. In an effort to keep things as secure as
-                            possible you will have to provide a password to
-                            encrypt your data for the export, and to later
-                            provide the password again to import it. This is
-                            laying the groundwork for a planned later automated
-                            (and secure) automated cross-device sync process.
-                        </Typography>
+                        {Releases[versionNumber]}
                     </Grid>
                 </Grid>
             </div>

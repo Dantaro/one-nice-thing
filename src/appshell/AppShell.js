@@ -90,14 +90,14 @@ export default ({ children }) => {
                         <ListItemText primary="Your Nice Things" />
                     </ListItem>
                 </Link>
-                <Link to="/about" className={classes.link}>
-                    <ListItem button>
-                        <ListItemText primary="About" />
-                    </ListItem>
-                </Link>
                 <Link to="/statistics" className={classes.link}>
                     <ListItem button>
                         <ListItemText primary="Statistics" />
+                    </ListItem>
+                </Link>
+                <Link to="/about" className={classes.link}>
+                    <ListItem button>
+                        <ListItemText primary="About" />
                     </ListItem>
                 </Link>
                 <ListItem>
