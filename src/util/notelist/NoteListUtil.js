@@ -84,3 +84,34 @@ export const findLongestNote = (noteList) => {
         .map((it) => it.trim().split(/\s+/).length)
         .reduce((acc, it) => (acc > it ? acc : it), 0)
 }
+
+export const findWordCounts = (noteList) => {
+    if (!noteList || noteList.length === 0) {
+        return []
+    }
+
+    const wordCounts = {}
+    noteList
+        .map(it => it.text)
+        .map(it => it.toLowerCase())
+        .forEach(it => {
+            it.split(' ')
+                .map(word => word.replace(/\W/g, ''))
+                .filter(word => word.length > 0)
+                .reduce((acc, cur) => {
+                const currentCount = acc[cur]
+                if (currentCount == null || currentCount == undefined) {
+                    acc[cur] = 1
+                } else {
+                    acc[cur] = currentCount + 1
+                }
+                return acc
+            }, wordCounts)
+        })
+
+    console.log(wordCounts)
+    
+    return Object.keys(wordCounts)
+        .map(key => [key, wordCounts[key]])
+        
+}
