@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import { useSelector } from 'react-redux'
@@ -8,6 +8,8 @@ import {
     findLongestNote,
 } from 'util/notelist'
 import { makeStyles } from '@material-ui/core/styles'
+import WordCloud from 'wordcloud'
+import { findWordCounts } from 'util/notelist/NoteListUtil'
 
 const useStyles = makeStyles({
     paper: {
@@ -20,6 +22,25 @@ const useStyles = makeStyles({
         textAlign: 'center',
     },
 })
+
+const NotelistWordMap = ({id, noteList}) => { 
+    const canvasRef = useRef(null)
+    useEffect(() => {
+        WordCloud(document.getElementById(id), {
+            list: findWordCounts(noteList),
+            rotateRatio: 0,
+            weightFactor: 10,
+            color: () => '#1261A0'
+        })
+    }, [id, noteList]);
+
+    return (<>
+        <Typography variant="body1">
+            Your Word Cloud
+        </Typography>
+        <canvas ref={canvasRef} id={id} /> 
+    </>)
+}
 
 export const Statistics = () => {
     const classes = useStyles()
@@ -55,6 +76,7 @@ export const Statistics = () => {
                     Longest Note:{' '}
                     {`${longestNote} ${longestNote === 1 ? 'word' : 'words'}`}
                 </Typography>
+                <NotelistWordMap id="notelistWordCount" noteList={noteList} />
                 <br/>
                 <Typography variant="body2">
                     Have an idea for other statistics? <a href="mailto:onenicethingdev@gmail.com">Shoot over an email</a> with your suggestions!
