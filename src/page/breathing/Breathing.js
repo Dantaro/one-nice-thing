@@ -3,7 +3,7 @@ import { Canvas } from 'component/canvas'
 import { Paper, Typography, Box, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         padding: '.5rem',
         margin: '0 auto',
@@ -17,8 +17,16 @@ const useStyles = makeStyles({
     instructions: {
         fontStyle: 'italic',
         fontSize: '.75em'
+    },
+    startButton: {
+        margin: "1rem"
+    },
+    canvasContainer: {
+        [theme.breakpoints.up('sm')]: {
+            margin: "2rem"
+        }
     }
-})
+}))
 
 export const Breathing = () => {
     const classes = useStyles()
@@ -52,7 +60,7 @@ export const Breathing = () => {
         <Paper>
             { displayBreathing ? (
                 <>
-                    <Canvas draw={ draw }/>
+                    <Canvas className={classes.canvasContainer} draw={ draw }/>
                     <Typography className={classes.instructions} variant="body1">
                         Take a deep breath as the circle grows, and let it out as the circle shrinks.
                     </Typography>
@@ -67,8 +75,7 @@ export const Breathing = () => {
                         Breath in and out with the circle for as long 
                         as you need to.
                     </Typography>
-                    <></>
-                    <Button onClick={handleStart}>Start</Button>
+                    <Button className={classes.startButton} onClick={handleStart}>Start</Button>
                 </>
             )}
         </Paper>
