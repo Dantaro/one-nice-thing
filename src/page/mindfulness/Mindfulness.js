@@ -1,6 +1,7 @@
 import React from 'react'
 import { Paper, Typography, Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -28,6 +29,9 @@ export const Mindfulness = () => {
                     part of managing your stress. Here are a few mindfulness
                     exercises to help you do just that!
                 </Typography>
+                <div>
+                    <Link to="/mindfulness/breath">Circle Breathing</Link>
+                </div>
             </Paper>
         </Box>
     )
