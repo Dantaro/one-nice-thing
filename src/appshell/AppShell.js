@@ -16,8 +16,11 @@ import { TransferModal } from 'component/transfer/TransferBox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileUpload } from '@fortawesome/free-solid-svg-icons'
 import { ReleaseNotesModal } from 'component/releasenotes'
+import {DarkModeSwitcher} from "../component/darkmode";
+import {useDispatch, useSelector} from "react-redux";
+import {SaveDarkMode} from "../store/action/DarkMode";
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(4),
-        backgroundColor: theme.palette.secondary.main,
         height: '100vh',
     },
     link: {
@@ -71,6 +73,9 @@ export default ({ children }) => {
     const classes = useStyles()
     const [mobileOpen, setMobileOpen] = React.useState(false)
     const [transferSaveOpen, setTransferSaveOpen] = React.useState(false)
+
+    const dispatch = useDispatch()
+    const darkModeEnabled = useSelector(state => state.darkMode)
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen)
@@ -100,6 +105,11 @@ export default ({ children }) => {
                         <ListItemText primary="About" />
                     </ListItem>
                 </Link>
+                <ListItem>
+                    <DarkModeSwitcher state={darkModeEnabled} onClick={() => {
+                        dispatch(SaveDarkMode(!darkModeEnabled))
+                    }}/>
+                </ListItem>
                 <ListItem>
                     <Typography variant="subtitle2">
                         {process.env.REACT_APP_CURRENT_VERSION}

@@ -22,5 +22,11 @@ export const Releases = {
             about One Nice Thing please feel free to send an email from the About 
             or Statistics page!
         </Typography>
+    ),
+    'v1.3.1': (
+        <Typography variant="body1">
+            With release 1.3.1 we've made just a few changes to the UI to make
+            One Nice Thing more usable on mobile devices, as well as adding a dark mode!
+        </Typography>
     )
 }
