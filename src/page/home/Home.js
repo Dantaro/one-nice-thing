@@ -7,12 +7,17 @@ import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { SaveNoteList } from 'store/action/NoteList'
 import { findCurrentStreak } from 'util/notelist/NoteListUtil'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronCircleUp, faChevronCircleDown} from "@fortawesome/free-solid-svg-icons";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     intro: {
         padding: '1.5rem 1rem',
         margin: '0 auto',
         textAlign: 'center',
+    },
+    hide: {
+        display: 'none',
     },
     inputPaper: {
         padding: '.5rem',
@@ -22,6 +27,11 @@ const useStyles = makeStyles({
     input: {
         width: '85%',
         marginBottom: '1rem',
+        '& .MuiFormLabel-root': {
+            [theme.breakpoints.down('sm')]: {
+                fontSize: '.75rem',
+            },
+        },
     },
     save: {
         marginBottom: '1rem',
@@ -42,7 +52,7 @@ const useStyles = makeStyles({
     dateHeader: {
         marginTop: '1.5rem',
     },
-})
+}))
 
 const dateTimeFormatter = new Intl.DateTimeFormat('en-US')
 
@@ -59,7 +69,7 @@ const Home = () => {
     const classes = useStyles()
 
     //Set up note, either as from the existing list, or as a new note entirely
-    const noteList = useSelector((state) => state.noteList)
+    const noteList = useSelector((state) => state.noteList, [])
     let currentNote
     if (noteList.length === 0) {
         currentNote = { text: null, date: dateTimeFormatter.format(new Date()) }
@@ -82,13 +92,17 @@ const Home = () => {
 
     const currentStreak = findCurrentStreak(noteList)
 
+    //Display/Hide Welcome box
+    const [showWelcome, setShowWelcome] = useState(false)
+
     return (
         <div>
             <Paper elevation={2} className={classes.intro}>
                 <Typography variant="h4" gutterBottom>
                     Welcome to One Nice Thing
                 </Typography>
-                <Typography variant="body1">
+                <FontAwesomeIcon icon={showWelcome ? faChevronCircleUp : faChevronCircleDown} onClick={() => setShowWelcome(!showWelcome)}/>
+                <Typography variant="body1" className={showWelcome ? '' : classes.hide}>
                     Here are the rules: Every day stop in and put one good thing
                     that happened to you here. You can change it up until
                     midnight, after which it's locked in the past, immutable.
@@ -129,7 +143,7 @@ const Home = () => {
                         setTimeout(() => setShowSaved(false), 2500)
                     }}
                 >
-                    Save :)
+                    Save
                 </Button>
                 <Typography
                     variant="h6"

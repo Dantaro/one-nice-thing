@@ -100,7 +100,7 @@ export const findWordCounts = (noteList) => {
                 .filter(word => word.length > 0)
                 .reduce((acc, cur) => {
                 const currentCount = acc[cur]
-                if (currentCount == null || currentCount == undefined) {
+                if (currentCount === null || currentCount === undefined) {
                     acc[cur] = 1
                 } else {
                     acc[cur] = currentCount + 1
